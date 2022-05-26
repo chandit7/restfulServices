@@ -3,10 +3,7 @@ package com.ramesh.server.main.user;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,7 +16,11 @@ public class UserResource {
         return service.findAll();
     }
 
-    
+    @GetMapping("/user/{id}")
+    public User retriveUser(@PathVariable int id)
+    {
+        return service.findOne(id);
+    }
 
     //Add a new user
     @PostMapping("/users")
